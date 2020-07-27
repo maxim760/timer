@@ -12,14 +12,15 @@ function getTimeremaining(endTime) {
             "hours": hours,
             "minutes":minutes,
             "seconds": seconds
-        }    
+        } 
+    // получили часы, минуты, секунды до дедлайна, который изначально указан
 }
-function setClock(id, endTime) {
+function setClock(id, endTime) { // 1 параметр - id таймера, 2 -дедлайн
     let timer = document.getElementById(id),
-        hours = timer.querySelector(".hours"),
+        hours = timer.querySelector(".hours"),  // в таймере должны быть элементы с классами hours minutes и seconds, в них будет заноситься время
         minutes = timer.querySelector(".minutes"),
         seconds = timer.querySelector(".seconds"),
-        timeInterval = setInterval(updateClock,1000)
+        timeInterval = setInterval(updateClock,1000) // раз в секунду обновляем таймер
 
 
     function updateClock() {
@@ -41,7 +42,7 @@ function setClock(id, endTime) {
         } else {
             seconds.textContent = "0" + t.seconds
         }
-        if(t.total <= 0 ) {
+        if(t.total <= 0 ) { // проверка на то, чтобы таймер не был меньше нуля и во время остановился
             clearInterval(timeInterval)
             hours.textContent = '00';
             minutes.textContent = '00';
